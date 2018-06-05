@@ -18,11 +18,7 @@ namespace Property_Sale_Reservation_Form
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Pay",
-                url: "{controller}/{action}/{id}",
-                defaults : new { controller = "Home", action = "Pay", id = UrlParameter.Optional }
-            );
+           
 
         }
     }

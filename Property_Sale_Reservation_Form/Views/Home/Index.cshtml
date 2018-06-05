@@ -9,172 +9,129 @@
 <body>
 
 
-<form id="form1" runat="server" method="post">
- 
+    <form id="form1" runat="server" method="post">
 
-    @{
+
+        @{
 
         string addressLine1 = Request.Form["AddressLine1Prop"];
         string addressLine2 = Request.Form["AddressLine2Prop"];
         string city = Request.Form["CityProp"];
         string state = Request.Form["StateProvinceRegionProp"];
         string zip = Request.Form["ZipPostalCodeProp"];
-
+        string firstName = Request.Form["FirstName"];
+        string lastName = Request.Form["LastName"];
         string amount = Request.Form["AmountProp"];
 
         if (ViewBag.Stage2 == "true")
         {
             <text>
-                Property Details: <br/>
-                Address Line 1: @addressLine1 <br/>
-                Address Line 2: @addressLine2 <br/>
-                City: @city <br/>
-                State/Province/Region: @state <br/>
-                Zip/Postal Code: @zip <br/>
+                <h4> Property Details:</h4> <br />
+                Address Line 1: @addressLine1 <br />
+                Address Line 2: @addressLine2 <br />
+                City: @city <br />
+                State/Province/Region: @state <br />
+                Zip/Postal Code: @zip <br />
+                Amount: @amount <br />
+                <br/>
+                <h4>Customer Details:</h4> <br/>
+            First Name:@firstName <br />
+        Last Name: @lastName <br />
+    </text>
 
-                Amount: @amount <br/>
-            </text>
-
-        }
-
-
-
-
-        using (Html.BeginForm())
-        {
-            if (ViewBag.Stage2 == "false") { 
-
-            <h3> Property Details</h3>
-
-           
-            
-                <p>
-
-                    <label for="addressLine1lbl">Address Line 1:</label>
-                    <input type="text" name="AddressLine1Prop" value=""/>
-
-                </p>
-                <p>
-                    <label for="addressLine2lbl">Address Line 2:</label>
-                    <input type="text" name="AddressLine2Prop" value=""/>
-                </p>
-                <p>
-                    <label for="citylbl">City:</label>
-                    <input type="text" name="CityProp" value=""/>
-                </p>
-                <p>
-                    <label for="stateProvinceRegionlbl">State/Province/Regione:</label>
-                    <input type="text" name="StateProvinceRegionProp" value=""/>
-                </p>
-                <p>
-                    <label for="zipPostalCode">Zip/Postal Code:</label>
-                    <input type="text" name="ZipPostalCodeProp" value=""/>
-                </p>
-
-                <p>
-                    <label for="amountlbl">Amount To:</label>
-                    <input type="text" name="AmountProp" value=""/>
-                </p>
-                
-                <p>
-                    <input type="submit" value="Confirm Details" @Url.Action("Index", new {addressline1prop = Request.Form["AddressLine1Prop"],
-                                                                addressline2prop = Request.Form["AddressLine2Prop"],
-                                                                cityprop = Request.Form["CityProp"], state = Request.Form["StateProvinceRegionProp"],
-                                                                zipprop = Request.Form["ZipPostalCodeProp"],
-                                                                amountprop = Request.Form["AmountProp"]
-                                                               
-                                                                 })/>
-                </p>
-
-            }
-
-            using (Html.BeginForm())
-            {
-                <h3>Customer Details</h3>
-
-                <p>
-                    <asp:Label ID="Label1" runat="server" Text="Title:"></asp:Label>
-
-                    <asp:DropDownList ID="title" CssClass="btn btn-secondary dropdown-toggle" runat="server" OnSelectedIndexChanged="Title_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </p>
-                <p>
-                    <label for="firstNamelbl">First Name:</label>
-                    <input type="text" name="FirstName" value=""/>
-                </p>
-                <p>
-                    <label for="lastNamelbl">Last Name:</label>
-                    <input type="text" name="LastName" value=""/>
-                </p>
-                <p>
-                    <label for="emaillbl">Email address:</label>
-                    <input type="text" name="EmailAddress" value=""/>
-                </p>
-                <p>
-                    <label for="phoneNumberlbl">Phone Number:</label>
-                    <input type="text" name="PhoneNumber" value=""/>
-                </p>
-                <p>
-                    &nbsp;
-                </p>
-                <p>
-                </p>
-
-                <p>
-                    <h3>Curent Address</h3>
-                    <label for="address1lbl">Address Line 1:</label>
-                    <input type="text" name="AddressLine1" value=""/>
-                </p>
-                <p>
-                    <label for="addressLine2">Address Line 2:</label>
-                    <input type="text" name="AddressLine2" value=""/>
-                </p>
-                <p>
-                    <label for="citylbl">City:</label>tml.
-                    <input type="text" name="City" value=""/>
-                </p>
-                <p>
-                    <label for="stateProvinceRegionlbl">State/Province/Region:</label>
-                    <input type="text" name="StateProvinceRegion" value=""/>
-                </p>
-                <p>
-                    <label for="zipPostalCodelbl">Zip/Postal Code:</label>
-                    <input type="text" name="ZipPostalCode" value=""/>
-                </p>
-
-                <p>
-                    &nbsp;
-                </p>
-                <p>
-
-                </p>
-              
-
-                <p>
-
-                    @Html.ActionLink("Confirm and Pay", "Pay", "Home", new
-               {
-                   firstname = Request.Form["FirstName"],
-                   lastname = Request.Form["LastName"],
-                   emailaddress = Request.Form["EmailAddress"],
-                   phonenumber = Request.Form["PhoneNumber"],
-                   addressline1 = Request.Form["AddressLine1"],
-                   addressline2 = Request.Form["AddressLine2"],
-                   city = Request.Form["City"],
-                   state = Request.Form["StateProvinceRegion"],
-                   zip = Request.Form["ZipPostalCode"]
-               }, new {@class = ".close-button"})
+}
 
 
-                </p>
 
-            }
-        }
+
+using (Html.BeginForm())
+{
+if (ViewBag.Stage2 == "false")
+{
+
+    <h3> Property Details</h3>
+
+
+
+    <p>
+
+        <label for="addressLine1lbl">Address Line 1:</label>
+        <input type="text" name="AddressLine1Prop" value="" />
+
+    </p>
+    
+    <p>
+        <label for="addressLine2lbl">Address Line 2:</label>
+        <input type="text" name="AddressLine2Prop" value="" />
+    </p>
+    
+    <p>
+        <label for="citylbl">City:</label>
+        <input type="text" name="CityProp" value="" />
+    </p>
+    
+    <p>
+        <label for="stateProvinceRegionlbl">State/Province/Region:</label>
+        <input type="text" name="StateProvinceRegionProp" value="" />
+    </p>
+   
+    <p>
+        <label for="zipPostalCode">Zip/Postal Code:</label>
+        <input type="text" name="ZipPostalCodeProp" value="" />
+    </p>
+ 
+    <p>
+        <label for="amountlbl">Amount To:</label>
+        <input type="text" name="AmountProp" value="" />
+    </p>
+   
+    <h3>Customer Details</h3>
+
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Title:"></asp:Label>
+
+        <asp:DropDownList ID="title" CssClass="btn btn-secondary dropdown-toggle" runat="server" OnSelectedIndexChanged="Title_SelectedIndexChanged">
+        </asp:DropDownList>
+    </p>
+    
+    <p>
+        <label for="firstNamelbl">First Name:</label>
+        <input type="text" name="FirstName" value="" />
+    </p>
+   
+    <p>
+        <label for="lastNamelbl">Last Name:</label>
+        <input type="text" name="LastName" value="" />
+    </p>
     
 
-   
-    }
-</form>
+    <p>
+        <input type="submit" value="Confirm Details" @Url.Action("Index", new { addressline1prop = Request.Form["AddressLine1Prop"], addressline2prop = Request.Form["AddressLine2Prop"], cityprop = Request.Form["CityProp"], state = Request.Form["StateProvinceRegionProp"], zipprop = Request.Form["ZipPostalCodeProp"], amountprop = Request.Form["AmountProp"], firstName = Request.Form["FirstName"], lastName = Request.Form["LastName"] }) />
+    </p>
+    
+}
+
+
+
+
+
+
+    <p>
+        <label for="confirmlbl"> Please check the above details and proceed when ready</label>
+        <br />
+        @Html.ActionLink("Confirm details and Pay", "Pay", "Home", new
+    { })
+
+
+    </p>
+
+
+}
+
+
+
+        }
+    </form>
         
    
 
