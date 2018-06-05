@@ -15,6 +15,7 @@ namespace Property_Sale_Reservation_Form.Controllers
             string ZipPostalCodeProp, string AmountProp , string FirstName, string LastName
         )
         {
+            
        
             ViewBag.Stage2 = "true";
 
