@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+</head>
+<body>
+
+
+      
+                <text>
+                    <h4> Property Details:</h4> <br />
+                    Address Line 1: @ViewBag.addressLine1 <br />
+                    Address Line 2: @ViewBag.addressLine2 <br />
+                    City: @ViewBag.city <br />
+                    State/Province/Region: @ViewBag.stage <br />
+                    Zip/Postal Code: @ViewBag.zip <br />
+                    Amount: @ViewBag.amount <br />
+                    <br />
+                    <h4>Customer Details:</h4> <br />
+                    First Name:@ViewBag.firstName <br />
+                    Last Name: @ViewBag.lastName <br />
+                </text>
+
+<p>
+    <label for="confirmlbl"> Please check the above details and proceed when ready</label>
+    <br />
+    @Html.ActionLink("Confirm details and Pay", "Pay", "Home", new
+    { })
+
+
+</p>
+
+
+
+</body>
+</html>
+

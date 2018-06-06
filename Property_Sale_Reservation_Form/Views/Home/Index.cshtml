@@ -35,9 +35,12 @@
                 Amount: @amount <br />
                 <br/>
                 <h4>Customer Details:</h4> <br/>
-            First Name:@firstName <br />
-        Last Name: @lastName <br />
-    </text>
+                First Name:@firstName <br />
+                Last Name: @lastName <br />
+                
+                The URL for this form is:
+                <a>@ViewBag.URL </a>
+            </text>
 
 }
 
@@ -48,6 +51,7 @@ using (Html.BeginForm())
 {
 if (ViewBag.Stage2 == "false")
 {
+
 
     <h3> Property Details</h3>
 

@@ -15,10 +15,23 @@ namespace Property_Sale_Reservation_Form
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" }
             );
-           
+            routes.MapRoute(
+                name: "LoadForm",
+                url: "{controller}/{action}/{reference}",
+                defaults: new { controller = "LoadForm", action = "Index", reference = UrlParameter.Optional }
+                );
+            routes.MapRoute(
+                name: "ReturnPage",
+                url: "{controller}/{action}",
+                defaults: new { controller = "LoadForm", action = "ReturnPage" }
+            );
+
+
+
+
 
         }
     }
