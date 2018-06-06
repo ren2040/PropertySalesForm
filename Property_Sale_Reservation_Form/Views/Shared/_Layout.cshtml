@@ -66,29 +66,31 @@
         </div>
     </header>
     <div class="sectionone">
-        <div class="headerLogo">
+    <div class="headerLogo">
 
-            <a id="skipNav" href="#skipNavigation">Skip Navigation</a>
-            <div class="wrapper">
+        <a id="skipNav" href="#skipNavigation">Skip Navigation</a>
+        <div class="wrapper">
 
-                <div class="site-logo" role="banner">
-                    <a href="http://www.hackney.gov.uk/index" title="Link to homepage" accesskey="1">
-                        <img src="http://www.hackney.gov.uk/resource/themes/hackney/images/Hackney_Logo_White.png" alt="Hackney" />
-                    </a>
-                    <div role="navigation" class="burger">Menu<img class="burgermenu" alt="menu image" src="http://www.hackney.gov.uk/resource/themes/hackney/images/burger.png"></div>
-                </div>
+            <div class="site-logo" role="banner">
+                <a href="http://www.hackneysales.org" title="Link to homepage" accesskey="1">
+                    <img src="~/Content/HackneySalesLogo.jpg" alt="Hackney" />
+                </a>
+                <div role="navigation" class="burger">Menu<img class="burgermenu" alt="menu image" src="http://www.hackney.gov.uk/resource/themes/hackney/images/burger.png"></div>
+            </div>
 
-                <div class="top-utilities">
+            <div class="top-utilities">
 
 
-                    <ul class="utilities inline-list" role="navigation">
+                <ul class="utilities inline-list" role="navigation">
 
                         
-                    </ul>
-                </div>
-
+                </ul>
             </div>
+
         </div>
+            
+    </div>
+    </div>
 
 
 
@@ -117,7 +119,7 @@
 
         <div class="article-heading" id="skipNavigation">
             <div class="wrapper">
-                <h1 style="font-size:1.71em; text-align:left;padding-left:10.5em">
+                <h1 style="font-size:1.71em; text-align:right;padding-left:10.5em">
                     Property Sale Reservation Fees Form
                     <!--application name-->
                 </h1>
@@ -199,6 +201,9 @@
         <footer class="no-print text-center">
             <div class="socialcontainer">
                 <ul class="utilities" role="contentinfo">
+                    <a href="http://www.hackney.gov.uk/index" title="Link to homepage" accesskey="1">
+                        <img src="https://www.hackney.gov.uk/resource/themes/hackney/images/Hackney_Logo_White.png" alt="Hackney" />
+                    </a>
                     <li><a href="http://www.hackney.gov.uk/accessibility-help">Accessibility </a></li>
                     <li><a href="http://www.hackney.gov.uk/apps">Apps</a></li>
                     <li><a href="http://www.hackney.gov.uk/a-to-z">A to Z</a></li>
@@ -253,47 +258,4 @@
 
 
 
-
-
-@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - First Touch Certificates</title>
-        @Styles.Render("~/Content/HackneyTemplateCSS.css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("First Touch", "Index", "Certificates", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Administration Tab", "Index", "Administration")</li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - First Touch</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
-    </html>*@
 

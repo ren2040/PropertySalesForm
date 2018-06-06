@@ -2055,7 +2055,7 @@ header .mobUtilities .top-utilities ul li a:hover {
   transform: rotate(90deg);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 500px) {
   .headerLogo .site-logo {
     width: 100%;
   }
