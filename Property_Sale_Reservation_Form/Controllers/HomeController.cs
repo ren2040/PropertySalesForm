@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Property_Sale_Reservation_Form.Models;
 
 namespace Property_Sale_Reservation_Form.Controllers
 {
     public class HomeController : Controller
     {
+        
         [HttpPost]
         public ActionResult Index(string AddressLine1Prop, string AddressLine2Prop, string CityProp,
             string StateProvinceRegionProp,
             string ZipPostalCodeProp, string AmountProp , string FirstName, string LastName
         )
         {
-            
-       
-            
-            ViewBag.Stage2 = "true";
+
+
+            PageDetails details = new PageDetails();
+            details.stage2 = "true";
+
 
             DBAccess dbAccess = new DBAccess();
             int reference = dbAccess.RecordForm(AddressLine1Prop, AddressLine2Prop, CityProp, StateProvinceRegionProp, ZipPostalCodeProp,
-                                AmountProp, FirstName, LastName, ViewBag.Stage2);
-            ViewBag.AmountToBePaid = AmountProp;
-            ViewBag.URL = "http://localhost:57764/LoadForm/Index/" + reference ;
+                                AmountProp, FirstName, LastName, details.stage2);
+          
+            
+            
+            ViewBag.URL = "https://myhackney.hackney.gov.uk/propertysales/LoadForm/Index/" + reference ;
 
             //SendEmail sendEmail = new SendEmail();
             //sendEmail.sendEmail(reference, ViewBag.URL);
@@ -37,24 +42,33 @@ namespace Property_Sale_Reservation_Form.Controllers
 
 
 
-            return View();
+            return View(details);
 
         }
 
         [HttpGet]
-        public ActionResult Pay()
+        public ActionResult Pay(string reference)
         {
-            //http://localhost:57764/LoadForm/ReturnPage
-            string returnURL = "https://hackney.paris-epayments.co.uk/paymentstest/sales/launchinternet.aspx?returnurl=http://localhost:57764/LoadForm/ReturnPage?CRMData=CAS-775515-M9F2QZ$3cb039e7-f421-e811-a4ef-005056986-64$10.00&payforbasketmode=true&returntext=BacktoSomething&ignoreconfirmation=true&data=Keepthisandreturnitattheend&recordxml=<records><record><reference>006884</reference><fund>02</fund><amount>10.00</amount><text></text></record></records>";
-            return Redirect(returnURL);
+
+           string url = HttpContext.Request.Url.AbsolutePath;
+            DBAccess dbAcess = new DBAccess();
+
+            int referenceInt = Convert.ToInt32(reference);
+            
+            List<double> amount = dbAcess.getAmount(referenceInt);
+            string amount2 = amount[0].ToString();
+          string returnURL = "https://hackney.paris-epayments.co.uk/payments/sales/launchinternet.aspx?returnurl=https://myhackney.hackney.gov.uk/propertysales/LoadForm/ReturnPage?Ref=" + reference + "&payforbasketmode=true&returntext=BacktoSomething&ignoreconfirmation=true&data=Keepthisandreturnitattheend&recordxml=<records><record><reference>006884</reference><fund>02</fund><amount>" + amount2 +"</amount><text></text></record></records>";
+          return Redirect(returnURL);
         }
         public ActionResult Index()
-       {
-            ViewBag.Stage2 = "false";
-           return View();
+        {
+            PageDetails dets = new PageDetails();
+            dets.stage2 = "false";
+            
+           return View(dets);
       }
         
 
-     
+    
     }
 }

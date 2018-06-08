@@ -74,6 +74,30 @@ namespace Property_Sale_Reservation_Form.Controllers
             return referenceData;
         }
 
+        public List<double> getAmount(int reference)
+        {
+            List<double> amountData = new List<double>();
+
+            using (SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager
+                .ConnectionStrings["ebaseSQLConnection"].ConnectionString))
+            {
+                connection.Open();
+                string query = $"SELECT [amount] FROM [EBS_DEV_DATA].[dbo].[PROPERTY_SALES] WHERE[Reference] = '{reference}'";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            amountData.Add(reader.GetDouble(0));
+                        }
+                    }
+                }
+            }
+
+            return amountData;
+        }
+
       
         public List<Property_Sale_Reservation_Form.Models.FormData> getForm(int reference)
         {

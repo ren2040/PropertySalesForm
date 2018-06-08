@@ -1,4 +1,4 @@
-﻿
+﻿@model Property_Sale_Reservation_Form.Models.PageDetails
 <!DOCTYPE html>
 
 <html >
@@ -11,7 +11,6 @@
 
     <form id="form1" runat="server" method="post">
 
-
         @{
 
         string addressLine1 = Request.Form["AddressLine1Prop"];
@@ -23,7 +22,7 @@
         string lastName = Request.Form["LastName"];
         string amount = Request.Form["AmountProp"];
 
-        if (ViewBag.Stage2 == "true")
+        if (@Model.stage2 == "true")
         {
             <text>
                 <h4> Property Details:</h4> <br />
@@ -42,15 +41,15 @@
                 <a>@ViewBag.URL </a>
             </text>
 
-}
+            }
 
 
 
 
-using (Html.BeginForm())
-{
-if (ViewBag.Stage2 == "false")
-{
+            using (Html.BeginForm())
+            {
+                if (@Model.stage2 == "false")
+                {
 
 
     <h3> Property Details</h3>
@@ -85,7 +84,7 @@ if (ViewBag.Stage2 == "false")
     </p>
  
     <p>
-        <label for="amountlbl">Amount To:</label>
+        <label for="amountlbl">Amount To(Do not include currency sign, e.g format : 200):</label>
         <input type="text" name="AmountProp" value="" />
     </p>
    

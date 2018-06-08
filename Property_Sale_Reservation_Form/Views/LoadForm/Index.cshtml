@@ -26,8 +26,7 @@
 <p>
     <label for="confirmlbl"> Please check the above details and proceed when ready</label>
     <br />
-    @Html.ActionLink("Confirm details and Pay", "Pay", "Home", new
-    { })
+    @Html.ActionLink("Confirm details and Pay", "Pay", "Home", new{ reference = ViewBag.ReferenceURL}, null)
 
 
 </p>
