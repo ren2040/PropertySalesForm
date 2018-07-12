@@ -13,7 +13,7 @@ namespace Property_Sale_Reservation_Form.Controllers
         {
 
             string url = HttpContext.Request.Url.AbsolutePath;
-            ViewBag.ReferenceURL = url.Substring(16,5).ToString();
+            ViewBag.ReferenceURL = url.Substring(url.Length -5,5).ToString();
             DBAccess dbAccess = new DBAccess();
             List<Models.FormData> formDetails = dbAccess.getForm(reference);
 
@@ -35,9 +35,20 @@ namespace Property_Sale_Reservation_Form.Controllers
             string reference = Request.QueryString["Ref"];
             string ServiceProcessed = Request.QueryString["serviceprocessed"];
             string receipt = Request.QueryString["receiptnumber"];
+          
 
             DBAccess dbAccess = new DBAccess();
             List<Models.FormData> formDetails = dbAccess.getForm(Convert.ToInt32(reference));
+
+            ViewBag.addressLine1 = formDetails[0].addressLine1;
+            ViewBag.addressLine2 = formDetails[0].addressLine2;
+            ViewBag.city = formDetails[0].city;
+            ViewBag.state = formDetails[0].state;
+            ViewBag.zip = formDetails[0].zip;
+            ViewBag.firstName = formDetails[0].firstName;
+            ViewBag.lastNane = formDetails[0].lastName;
+            ViewBag.amount = formDetails[0].amount;
+
 
             if (ServiceProcessed == "true")
             {
@@ -49,8 +60,8 @@ namespace Property_Sale_Reservation_Form.Controllers
                                                 "Address Line 1:" + formDetails[0].addressLine1 + System.Environment.NewLine
                                                 + "Address Line 2:" + formDetails[0].addressLine2 + System.Environment.NewLine
                                                 + "City:" + formDetails[0].city + System.Environment.NewLine
-                                                + "State/Province/Region:" + formDetails[0].state + System.Environment.NewLine
-                                                + "Zip/Postal Code:" + formDetails[0].zip + System.Environment.NewLine
+                                                + "County:" + formDetails[0].state + System.Environment.NewLine
+                                                + "Post code:" + formDetails[0].zip + System.Environment.NewLine
                                                 + System.Environment.NewLine + System.Environment.NewLine
                                                 + "Amount Paid:" + formDetails[0].amount
                                                 + "Payment was sucessful");
@@ -65,8 +76,8 @@ namespace Property_Sale_Reservation_Form.Controllers
                                                 "Address Line 1:" + formDetails[0].addressLine1 + System.Environment.NewLine
                                                 + "Address Line 2:" + formDetails[0].addressLine2 + System.Environment.NewLine
                                                 + "City:" + formDetails[0].city + System.Environment.NewLine
-                                                + "State/Province/Region:" + formDetails[0].state + System.Environment.NewLine
-                                                + "Zip/Postal Code:" + formDetails[0].zip + System.Environment.NewLine
+                                                + "County:" + formDetails[0].state + System.Environment.NewLine
+                                                + "Post code:" + formDetails[0].zip + System.Environment.NewLine
                                                 + System.Environment.NewLine + System.Environment.NewLine
                                                 
                                                 + "----------PAYMENT FAILED----------"

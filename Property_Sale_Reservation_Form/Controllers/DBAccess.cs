@@ -36,7 +36,7 @@ namespace Property_Sale_Reservation_Form.Controllers
 
 
             string updateSQL =
-                $"INSERT INTO [EBS_DEV_DATA].[dbo].[PROPERTY_SALES](Reference, AddressLine1, AddressLine2, City, StateProvinceRegion, Zip, Amount, FirstName, LastName, Stage2) VALUES('{reference}','{addressLine1}','{addressLine2}','{city}','{state}','{zip}','{amount}','{firstName}','{lastName}','{stage2}')";
+                $"INSERT INTO [dbo].[PROPERTY_SALES](Reference, AddressLine1, AddressLine2, City, StateProvinceRegion, Zip, Amount, FirstName, LastName, Stage2) VALUES('{reference}','{addressLine1}','{addressLine2}','{city}','{state}','{zip}','{amount}','{firstName}','{lastName}','{stage2}')";
 
             using (SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager
                 .ConnectionStrings["ebaseSQLConnection"].ConnectionString))
@@ -58,7 +58,7 @@ namespace Property_Sale_Reservation_Form.Controllers
                 .ConnectionStrings["ebaseSQLConnection"].ConnectionString))
             {
                 connection.Open();
-                string query = "SELECT Reference FROM DBO.PROPERTY_SALES";
+                string query = "SELECT Reference FROM [dbo].[PROPERTY_SALES]";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -82,7 +82,7 @@ namespace Property_Sale_Reservation_Form.Controllers
                 .ConnectionStrings["ebaseSQLConnection"].ConnectionString))
             {
                 connection.Open();
-                string query = $"SELECT [amount] FROM [EBS_DEV_DATA].[dbo].[PROPERTY_SALES] WHERE[Reference] = '{reference}'";
+                string query = $"SELECT [amount] FROM dbo.[PROPERTY_SALES] WHERE [Reference] = '{reference}'";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -98,7 +98,8 @@ namespace Property_Sale_Reservation_Form.Controllers
             return amountData;
         }
 
-      
+       
+        
         public List<Property_Sale_Reservation_Form.Models.FormData> getForm(int reference)
         {
             var formData = new List<Property_Sale_Reservation_Form.Models.FormData>();
@@ -106,9 +107,8 @@ namespace Property_Sale_Reservation_Form.Controllers
                 using (SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager
                     .ConnectionStrings["ebaseSQLConnection"].ConnectionString))
                 {
-                    var sql =
-                        $"SELECT  [AddressLine1],[AddressLine2],[City],[StateProvinceRegion],[Zip],[Amount] ,[FirstName],[LastName],[Stage2] FROM [EBS_DEV_DATA].[dbo].[PROPERTY_SALES] WHERE[Reference] = '{reference}'";
-                    formData = connection.Query<Property_Sale_Reservation_Form.Models.FormData>(sql).ToList();
+                    var sql = "SELECT [AddressLine1],[AddressLine2],[City],[StateProvinceRegion],[Zip],[Amount] ,[FirstName],[LastName],[Stage2] FROM [PROPERTY_SALES] WHERE [Reference] =" + reference;
+                formData = connection.Query<Property_Sale_Reservation_Form.Models.FormData>(sql).ToList();
                 }
             return formData;
             }
